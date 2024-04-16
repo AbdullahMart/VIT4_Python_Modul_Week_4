@@ -7,7 +7,13 @@
 
 #Question 2:
 
-
+def rotateLeft(d, arr):
+    for i in range(d):
+        temp=arr[0]
+        for j in range(len(arr)-1):
+            arr[j]=arr[j+1]
+        arr[len(arr)-1]=temp    
+    return arr  
 
 #Question 3:
 

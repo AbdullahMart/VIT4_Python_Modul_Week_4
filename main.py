@@ -1,7 +1,7 @@
-import kitap_islemleri
-import uye_islemleri
+import book_transaction
+import member_transaction
 import json
-import zaman
+import time
 
 
 while True:
@@ -41,7 +41,8 @@ while True:
                 pass
 
             elif menu_member_transaction=="2":
-                add_book()                
+                add_member()
+                
 
             elif menu_member_transaction=="3":
                 uye_ara(arama)
@@ -83,8 +84,7 @@ while True:
             menu_book_transactioni= input("Please make a selection:")
             
             if menu_book_transactioni=="1":
-                print("we are working for you :)")
-                save_books()
+                pass
 
             elif menu_book_transactioni=="2":
                 add_book()
@@ -93,7 +93,7 @@ while True:
                 kitap_arama(arama)
             
             elif menu_book_transactioni== "4":
-                kitap_sil(silinecek_veri)
+                delete_book()
 
             elif menu_book_transactioni =="0":
                 print("You are logged out of book transactions")
