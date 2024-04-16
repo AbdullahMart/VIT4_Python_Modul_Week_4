@@ -41,7 +41,7 @@ while True:
                 pass
 
             elif menu_member_transaction=="2":
-                uye_ekle(Uye_Adi,Tel,Adres)
+                add_book()                
 
             elif menu_member_transaction=="3":
                 uye_ara(arama)
