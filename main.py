@@ -7,109 +7,112 @@ import zaman
 while True:
     try:
         print("""
-    |=========Library  Management System=======[-][o][x]
-    |        H a l k  K u t u p h a n e m i z e        |
-    |              H O S  G E L D I N I Z              |
+    |===========Library  Management System=====[-][o][x]
+    |            P U B L İ C   L İ B R A R Y           |
+    |                 W  E  L  K  O  M                 |
     |                                                  |
-    |   1- UYELIK ISLEMLERI => 1                       |
-    |   2- KITAP ISLEMLERI ==> 2                       |
-    |   3- CIKIS ============> 0                       | 
+    |   1- MEMBER TRANSACTİONS => 1                    |
+    |   2- BOOK TRANSACTİONS ===> 2                    |
+    |   3- EXİT ================> 0                    | 
     |                                                  |       
     |       copyright@vit4 group2  version 1.04        |
     |==================================================| """)
 
-        ana_menu_secim= input("Lütfen Bir seçim yapiniz:")
+        main_menu_choise= input("Please make a selection:")
 
-        if ana_menu_secim == "1":
+        if main_menu_choise == "1":
+
             print("""
-    |=========Library  Management System=======[-][o][x]
-    |        U Y E L I K   I S L E M L E R I N E       |
-    |              H O S  G E L D I N I Z              |
-    |                                                  |
-    |   1- UYELER ====>1    5- KITAP ODUNC VERME=>5    |
-    |   2- UYE EKLEME=>2    6- KITAP IADE =======>6    | 
-    |   3- UYE ARA ===>3    7- KITAP TAKIBI =====>7    |
-    |   4- UYE SIL ===>4    8- CIKIS ============>0    | 
-    |                                                  | 
-    |               version 1.04                       |       
-    |           copyright@vit4 group2                  |
-    |==================================================| """)
-            menu_uye_islemleri= input("Lütfen Bir seçim yapiniz:")
+    |===========Library  Management System=======[-][o][x]
+    |         M E M B E R   T R A N S A C T İ O N        |
+    |                 W  E  L  K  O  M                   |
+    |                                                    |
+    |   1- MEMBERS ======>1   |  5- BOOK LOADİNG=====>5  |
+    |   2- ADD MEMBER====>2   |  6- BOOK RETURN======>6  | 
+    |   3- SEARCH MEMBER=>3   |  7- BOOK TRACKING====>7  |
+    |   4- DELETE MEMBER=>4   |  8- EXİT ============>0  | 
+    |                                                    | 
+    |                  version 1.04                      |       
+    |              copyright@vit4 group2                 |
+    |====================================================| """)
+            menu_member_transaction= input("Please make a selection:")
 
-            if menu_uye_islemleri=="1":
+            if menu_member_transaction=="1":
                 pass
 
-            elif menu_uye_islemleri=="2":
+            elif menu_member_transaction=="2":
                 uye_ekle(Uye_Adi,Tel,Adres)
 
-            elif menu_uye_islemleri=="3":
+            elif menu_member_transaction=="3":
                 uye_ara(arama)
 
-            elif menu_uye_islemleri== "4":
+            elif menu_member_transaction== "4":
                 uye_sil(silinecek_uye)
 
-            elif menu_uye_islemleri=="5":
+            elif menu_member_transaction=="5":
                 kitap_odunc_verme()
 
-            elif menu_uye_islemleri=="6":
+            elif menu_member_transaction=="6":
                 kitap_iade()
 
-            elif menu_uye_islemleri == "7":
+            elif menu_member_transaction == "7":
                 pass
-            elif menu_uye_islemleri =="0":
-                print("Uye Islemlerinden cikis yaptiniz.")
+            elif menu_member_transaction =="0":
+                print("You are logged out of member transactions")
                 break
             else:
-                print("Geçersiz seçim! Lütfen geçerli bir seçim yapınız.")
+                print("Invalid selection! Please make a valid choice.")
 
             
-        elif ana_menu_secim == "2":
+        elif main_menu_choise == "2":
+
             print("""
     |=========Library  Management System=======[-][o][x]
-    |        K I T A P   İ Ş L E M L E R İ N E         |
-    |              H O Ş  G E L D İ N İ Z              |
+    |           B O O K   T R A N S A C T İ O N        |
+    |                 W  E  L  K  O  M                 |
     |                                                  |
-    |   1- KITAPLAR ====>1    5- CIKIS===>0            |
-    |   2- KITAP EKLEME=>2                             | 
-    |   3- KITAP ARA ===>3                             |
-    |   4- KITAP SIL ===>4                             | 
+    |   1- BOOKS =========>1    5- EXİT=====>0         |
+    |   2- ADD BOOK=======>2                           | 
+    |   3- SEARCH BOOK ===>3                           |
+    |   4- DELETE BOOK ===>4                           | 
     |                                                  | 
     |               version 1.04                       |       
     |           copyright@vit4 group2                  |
     |==================================================| """)
 
-            menu_kitap_islemleri= input("Lütfen Bir seçim yapiniz:")
+            menu_book_transactioni= input("Please make a selection:")
             
-            if menu_kitap_islemleri=="1":
+            if menu_book_transactioni=="1":
                 pass
 
-            elif menu_kitap_islemleri=="2":
+            elif menu_book_transactioni=="2":
                 kitap_ekle(Kitap_Adi, Yazar, Yayinevi, Barkod)
 
-            elif menu_kitap_islemleri=="3":
+            elif menu_book_transactioni=="3":
                 kitap_arama(arama)
             
-            elif menu_kitap_islemleri== "4":
+            elif menu_book_transactioni== "4":
                 kitap_sil(silinecek_veri)
 
-            elif menu_kitap_islemleri =="0":
-                print("Kitap Islemlerinden cikis yaptiniz.")
+            elif menu_book_transactioni =="0":
+                print("You are logged out of book transactions")
                 break
 
             else:
-                print("Geçersiz seçim! Lütfen geçerli bir seçim yapınız.")
+                print("Invalid selection! Please make a valid choice.")
         
-        elif ana_menu_secim == "0":
+        elif main_menu_choise == "0":
+
             print("Cikis yaptiniz.")
             print("Tekrar Kütüphanemize bekleriz..")
             break
 
         else:
-            print("Geçersiz seçim! Lütfen geçerli bir seçim yapınız.")
+            print("Invalid selection! Please make a valid choice.")
 
 
-    except Exception as hata:
-        print("Hata: ",hata, end="\n\n")
+    except Exception as mistake:
+        print("Error: ",mistake, end="\n\n")
 
 
     
