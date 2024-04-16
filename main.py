@@ -1,5 +1,5 @@
-import kitap_işlemleri
-import uye_işlemleri
+import kitap_islemleri
+import uye_islemleri
 import json
 import zaman
 
@@ -83,10 +83,11 @@ while True:
             menu_book_transactioni= input("Please make a selection:")
             
             if menu_book_transactioni=="1":
-                pass
+                print("we are working for you :)")
+                save_books()
 
             elif menu_book_transactioni=="2":
-                kitap_ekle(Kitap_Adi, Yazar, Yayinevi, Barkod)
+                add_book()
 
             elif menu_book_transactioni=="3":
                 kitap_arama(arama)
