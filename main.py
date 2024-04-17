@@ -1,11 +1,18 @@
-import book_transaction
+#Kitap işlemleri dosyasını çekiyor.
+import book_transaction 
+
+#üye işlemleri dosyasını çekiyor.
 import member_transaction
+
+#json kütühanesi
 import json
+
+#time dosyasını çekiyor.
 import time
 
 
 while True:
-    try:
+    try: # try hata ayıklama için kullanıyor.
         print("""
     |===========Library  Management System=====[-][o][x]
     |            P U B L İ C   L İ B R A R Y           |
@@ -17,9 +24,10 @@ while True:
     |                                                  |       
     |       copyright@vit4 group2  version 1.04        |
     |==================================================| """)
-
+        #Kullanıcıdan ana menü için seçim yapması isteniyor.
         main_menu_choise= input("Please make a selection:")
 
+        #Kullanıcı üye işlemlerine giriyor.
         if main_menu_choise == "1":
 
             print("""
@@ -35,37 +43,49 @@ while True:
     |                  version 1.04                      |       
     |              copyright@vit4 group2                 |
     |====================================================| """)
+
+            #Kullanıcıya üye işlemleri için seçim yaptırılıyor.
             menu_member_transaction= input("Please make a selection:")
 
-            if menu_member_transaction=="1":
+            #Kayıtlı tüm üye listesini sıralıyor.
+            if menu_member_transaction=="1": 
                 pass
 
+            #Üye ekle fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="2":
                 add_member()
                 
-
+             #Üye arama fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="3":
-                uye_ara(arama)
+                search_member()
 
+            #Üye silme fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction== "4":
-                uye_sil(silinecek_uye)
+                delete_member()
 
+            #Kitap ödünç verme fonksiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="5":
-                kitap_odunc_verme()
-
-            elif menu_member_transaction=="6":
-                kitap_iade()
-
-            elif menu_member_transaction == "7":
                 pass
-            elif menu_member_transaction =="0":
+
+            # Kitap iade verme fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
+            elif menu_member_transaction=="6":
+                return_book()
+
+            #Kitap takibi fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
+            elif menu_member_transaction == "7":
+                book_tracking()
+
+            # Üye  işlemlerinden çıkış yapıyoruz.
+            elif menu_member_transaction =="0": 
                 print("You are logged out of member transactions")
                 break
-            else:
-                print("Invalid selection! Please make a valid choice.")
 
-            
-        elif main_menu_choise == "2":
+            # Yanlış değer girdiği için tekrar seçim yapılması isteniyor.
+            else:
+                print("Invalid selection! Please make a valid choice.") 
+
+        #Kullanıcı Kitap işlemleri menüsüne giriyor.   
+        elif main_menu_choise == "2": 
 
             print("""
     |=========Library  Management System=======[-][o][x]
@@ -81,38 +101,46 @@ while True:
     |           copyright@vit4 group2                  |
     |==================================================| """)
 
-            menu_book_transactioni= input("Please make a selection:")
-            
+            #Kullanıcıdan menü için seçim yaptırılıyor.
+            menu_book_transactioni= input("Please make a selection:") 
+
+            #Bütün kitap listesini çağırıyoruz.(Kitap işlemlerinde tanımlı)
             if menu_book_transactioni=="1":
                 pass
 
+            #Kitap ekleme fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transactioni=="2":
                 add_book()
 
+            #Kitap arama Fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transactioni=="3":
-                kitap_arama(arama)
-            
+                search_book()
+
+            #Kitap silme fonksiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transactioni== "4":
                 delete_book()
 
+            # Kitap işlemleri Çıkış 
             elif menu_book_transactioni =="0":
                 print("You are logged out of book transactions")
                 break
-
+            #Kitap işlemleri menüsündeyYanlış değer girdiği için tekrar seçim yapılması isteniyor.
             else:
                 print("Invalid selection! Please make a valid choice.")
         
+        # Ana menü çıkış
         elif main_menu_choise == "0":
 
             print("Cikis yaptiniz.")
             print("Tekrar Kütüphanemize bekleriz..")
             break
-
+        
+        # ana menüye yanlış değer girildiğinde seçimin düzeltilmesi isteniyor.
         else:
             print("Invalid selection! Please make a valid choice.")
 
-
-    except Exception as mistake:
+    #programda istisna hata oluştuğunda devreye giriyor.
+    except Exception as mistake: 
         print("Error: ",mistake, end="\n\n")
 
 
