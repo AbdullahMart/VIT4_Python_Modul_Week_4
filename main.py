@@ -107,7 +107,7 @@ while True:
 
             #Bütün kitap listesini çağırıyoruz.(Kitap işlemlerinde tanımlı)
             if menu_book_transactioni=="1":
-                pass
+                book_transaction.list_of_books()
 
             #Kitap ekleme fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transactioni=="2":

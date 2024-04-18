@@ -107,6 +107,19 @@ def update_book():
 
     print("Book not found.")
 
+# Kitaplari listeleyen fonksiyon.
+def list_of_books():
+    books = load_books()
+    print("List of Books:")
+    for book in books:
+        print("Barcode:", book["Barcode"])
+        print("Language:", book["Language"])
+        print("Price:", book["Price"])
+        print("Book Name:", book["Book_Name"])
+        print("Publisher:", book["Publisher"])
+        print("Author:", book["Author"])
+        print()  # Boş bir satır ekleyerek kitaplar arasında boşluk bırakıyoruz.
+
 # Kitap işlemlerinin yapıldığı menüyü gösteren fonksiyon.
 def book_menu():
     while True:
