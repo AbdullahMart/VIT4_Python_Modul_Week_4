@@ -49,7 +49,7 @@ while True:
 
             #Kayıtlı tüm üye listesini sıralıyor.
             if menu_member_transaction=="1": 
-                pass
+                member_transaction.members()
 
             #Üye ekle fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="2":
@@ -65,7 +65,7 @@ while True:
 
             #Kitap ödünç verme fonksiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="5":
-                pass
+                member_transaction.borrow_book()
 
             # Kitap iade verme fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="6":
