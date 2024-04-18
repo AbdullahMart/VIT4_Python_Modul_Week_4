@@ -8,7 +8,7 @@ import json
 import os
 
 #time dosyasını çekiyor.
-import time
+import time_library
 
 from datetime import datetime, timedelta
 
@@ -145,9 +145,9 @@ def borrow_book():
                     if member["id"] == id:
                         track = read_track()
 
-                        borrow_date_= time.current_time().strftime("%Y-%m-%d %H:%M:%S")
+                        borrow_date_= time_library.current_time()
 
-                        return_date_=time.two_weeks_later().strftime("%Y-%m-%d %H:%M:%S")
+                        return_date_=time_library.two_weeks_later()
 
                         track.append({"Member": member,  "Book": book,  "borrow_date": borrow_date_ ,
                                         "return_date": return_date_})

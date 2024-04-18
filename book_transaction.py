@@ -65,7 +65,7 @@ def delete_book():
 # Bir kitabı arayan fonksiyon.
 def search_book():
     books = load_books()
-    Barcode = input("Enter the Barcode of the book to search: ")
+    Barcode = input("Enter the Barcode of the book to search:")
 
     for book in books:
         if book["Barcode"] == Barcode:
