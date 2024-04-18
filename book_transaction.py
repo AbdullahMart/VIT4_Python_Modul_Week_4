@@ -16,20 +16,20 @@ def save_books(books):
 
 def add_book():
     books = load_books()
-    barcode = input("Enter the barcode: ")
-    language = input("Enter the language: ")
-    price = input("Enter the price: ")
-    book_name = input("Enter the book name: ")
-    publisher = input("Enter the publisher: ")
-    author = input("Enter the author: ")
+    Barcode = input("Enter the Barcode: ")
+    Language = input("Enter the Language: ")
+    Price = input("Enter the Price: ")
+    Book_Name = input("Enter the book name: ")
+    Publisher = input("Enter the Publisher: ")
+    Author = input("Enter the Author: ")
 
     new_book = {
-        "barcode": barcode,
-        "language": language,
-        "price": price,
-        "book_name": book_name,
-        "publisher": publisher,
-        "author": author
+        "Barcode": Barcode,
+        "Language": Language,
+        "Price": Price,
+        "Book_Name": Book_Name,
+        "Publisher": Publisher,
+        "Author": Author
     }
     books.append(new_book)
     save_books(books)
@@ -37,10 +37,10 @@ def add_book():
 
 def delete_book():
     books = load_books()
-    barcode = input("Enter the barcode of the book to delete: ")
+    Barcode = input("Enter the Barcode of the book to delete: ")
 
     for book in books:
-        if book["barcode"] == barcode:
+        if book["Barcode"] == Barcode:
             books.remove(book)
             save_books(books)
             print("Book deleted successfully.")
@@ -50,10 +50,10 @@ def delete_book():
 
 def search_book():
     books = load_books()
-    barcode = input("Enter the barcode of the book to search: ")
+    Barcode = input("Enter the Barcode of the book to search: ")
 
     for book in books:
-        if book["barcode"] == barcode:
+        if book["Barcode"] == Barcode:
             print("Book found:")
             print(book)
             return
@@ -62,26 +62,26 @@ def search_book():
 
 def update_book():
     books = load_books()
-    barcode = input("Enter the barcode of the book to update: ")
+    Barcode = input("Enter the Barcode of the book to update: ")
 
     for book in books:
-        if book["barcode"] == barcode:
+        if book["Barcode"] == Barcode:
             print("Enter new information (leave blank to keep unchanged):")
-            language = input("Enter the new language: ")
-            if language:
-                book["language"] = language
-            price = input("Enter the new price: ")
-            if price:
-                book["price"] = price
-            book_name = input("Enter the new book name: ")
-            if book_name:
-                book["book_name"] = book_name
-            publisher = input("Enter the new publisher: ")
-            if publisher:
-                book["publishing_house"] = publisher
-            author = input("Enter the new author: ")
-            if author:
-                book["author"] = author
+            Language = input("Enter the new Language: ")
+            if Language:
+                book["Language"] = Language
+            Price = input("Enter the new Price: ")
+            if Price:
+                book["Price"] = Price
+            Book_Name = input("Enter the new book name: ")
+            if Book_Name:
+                book["Book_Name"] = Book_Name
+            Publisher = input("Enter the new Publisher: ")
+            if Publisher:
+                book["Publisher"] = Publisher
+            Author = input("Enter the new Author: ")
+            if Author:
+                book["Author"] = Author
 
             save_books(books)
             print("Book updated successfully.")
