@@ -9,7 +9,7 @@ import json
 
 #time dosyasını çekiyor.
 import time
-import datetime
+
 
 
 while True:
