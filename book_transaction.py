@@ -1,21 +1,30 @@
 import json
 import os
 
+# Dosya adını sabit bir değişkene atayarak kodun her yerinde kullanımını kolaylaştırıyoruz.
 BOOKS_FILE = "books.json"
 
+# Kitapları yüklemek için dosyayı kontrol eden bir fonksiyon.
 def load_books():
+    # Eğer dosya yoksa, boş bir liste oluşturup dosyaya yazıyoruz.
     if not os.path.exists(BOOKS_FILE):
         with open(BOOKS_FILE, "w") as f:
             json.dump([], f)
+    # Dosyayı okuyup içeriği JSON formatında döndürüyoruz.
     with open(BOOKS_FILE, "r") as f:
         return json.load(f)
 
+# Kitapları kaydetmek için dosyaya yazan bir fonksiyon.
 def save_books(books):
+    # Kitap listesini JSON formatında dosyaya yazıyoruz.
     with open(BOOKS_FILE, "w") as f:
         json.dump(books, f, indent=4)
 
+# Yeni bir kitap ekleyen fonksiyon.
 def add_book():
+    # Mevcut kitapları yüklüyoruz.
     books = load_books()
+    # Kullanıcıdan kitap bilgilerini alıyoruz.
     Barcode = input("Enter the Barcode: ")
     Language = input("Enter the Language: ")
     Price = input("Enter the Price: ")
@@ -23,6 +32,7 @@ def add_book():
     Publisher = input("Enter the Publisher: ")
     Author = input("Enter the Author: ")
 
+    # Yeni kitabı oluşturup listeye ekliyoruz.
     new_book = {
         "Barcode": Barcode,
         "Language": Language,
@@ -32,34 +42,41 @@ def add_book():
         "Author": Author
     }
     books.append(new_book)
+    # Güncellenmiş kitap listesini kaydediyoruz.
     save_books(books)
     print("Book added successfully.")
 
+# Bir kitabı silen fonksiyon.
 def delete_book():
     books = load_books()
     Barcode = input("Enter the Barcode of the book to delete: ")
 
     for book in books:
         if book["Barcode"] == Barcode:
+            # Kitabı listeden kaldırıyoruz.
             books.remove(book)
+            # Güncellenmiş kitap listesini kaydediyoruz.
             save_books(books)
             print("Book deleted successfully.")
             return
 
     print("Book not found.")
 
+# Bir kitabı arayan fonksiyon.
 def search_book():
     books = load_books()
     Barcode = input("Enter the Barcode of the book to search: ")
 
     for book in books:
         if book["Barcode"] == Barcode:
+            # Kitabı bulup ekrana yazdırıyoruz.
             print("Book found:")
             print(book)
             return
 
     print("Book not found.")
 
+# Bir kitabı güncelleyen fonksiyon.
 def update_book():
     books = load_books()
     Barcode = input("Enter the Barcode of the book to update: ")
@@ -83,12 +100,14 @@ def update_book():
             if Author:
                 book["Author"] = Author
 
+            # Güncellenmiş kitap listesini kaydediyoruz.
             save_books(books)
             print("Book updated successfully.")
             return
 
     print("Book not found.")
 
+# Kitap işlemlerinin yapıldığı menüyü gösteren fonksiyon.
 def book_menu():
     while True:
         print("\nBook Transactions Menu:")
@@ -99,6 +118,7 @@ def book_menu():
         print("5. Return to Main Menu")
         choice = input("Enter your choice: ")
 
+        # Kullanıcının seçimine göre ilgili fonksiyonu çağırıyoruz.
         if choice == "1":
             add_book()
         elif choice == "2":
@@ -113,3 +133,6 @@ def book_menu():
         else:
             print("Invalid choice. Please try again.")
 
+# Programın başlangıcı
+if __name__ == "__main__":
+    book_menu()
