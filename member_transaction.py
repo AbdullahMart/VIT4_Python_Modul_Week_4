@@ -107,7 +107,7 @@ def borrow_book():
         if book_borrow_choice == "0":
             return  # Return to the main page
 
-        with open("book.json", "r", encoding="utf-8") as file:
+        with open("books.json", "r", encoding="utf-8") as file:
             books = json.load(file)
 
         book_found = False
