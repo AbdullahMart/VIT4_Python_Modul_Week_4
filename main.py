@@ -9,6 +9,7 @@ import json
 
 #time dosyasını çekiyor.
 import time
+import datetime
 
 
 while True:
@@ -102,26 +103,26 @@ while True:
     |==================================================| """)
 
             #Kullanıcıdan menü için seçim yaptırılıyor.
-            menu_book_transactioni= input("Please make a selection:") 
+            menu_book_transaction= input("Please make a selection:") 
 
             #Bütün kitap listesini çağırıyoruz.(Kitap işlemlerinde tanımlı)
-            if menu_book_transactioni=="1":
+            if menu_book_transaction=="1":
                 pass
 
             #Kitap ekleme fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
-            elif menu_book_transactioni=="2":
+            elif menu_book_transaction=="2":
                 book_transaction.add_book()
 
             #Kitap arama Fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
-            elif menu_book_transactioni=="3":
+            elif menu_book_transaction=="3":
                 book_transaction.search_book()
 
             #Kitap silme fonksiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
-            elif menu_book_transactioni== "4":
+            elif menu_book_transaction== "4":
                 book_transaction.delete_book()
 
             # Kitap işlemleri Çıkış 
-            elif menu_book_transactioni =="0":
+            elif menu_book_transaction =="0":
                 print("You are logged out of book transactions")
                 break
             #Kitap işlemleri menüsündeyYanlış değer girdiği için tekrar seçim yapılması isteniyor.
