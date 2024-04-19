@@ -10,7 +10,10 @@ def load_books():
     if not os.path.exists(BOOKS_FILE):
         with open(BOOKS_FILE, "w",encoding="utf-8") as f:
             json.dump([], f)
+<<<<<<< Updated upstream
     # Dosyayı okuyup içeriği JSON formatında döndürüyoruz.
+=======
+>>>>>>> Stashed changes
     with open(BOOKS_FILE, "r",encoding="utf-8") as f:
         return json.load(f)
 

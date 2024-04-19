@@ -1,5 +1,5 @@
 #Kitap işlemleri dosyasını çekiyor.
-from book_transaction import delete_book,load_books,save_books
+from book_transaction import load_books, save_books,delete_book
 
 #json kütüphanesi.
 import json
