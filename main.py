@@ -8,8 +8,7 @@ import member_transaction
 import json
 
 #time dosyasını çekiyor.
-import time_library
-
+import my_time
 
 
 while True:
@@ -107,7 +106,7 @@ while True:
 
             #Bütün kitap listesini çağırıyoruz.(Kitap işlemlerinde tanımlı)
             if menu_book_transaction=="1":
-                pass
+                book_transaction.list_of_books()
 
             #Kitap ekleme fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transaction=="2":
@@ -122,7 +121,7 @@ while True:
                 book_transaction.delete_book()
 
             # Kitap işlemleri Çıkış 
-            elif menu_book_transaction =="0":
+            elif menu_book_transaction=="0":
                 print("You are logged out of book transactions")
                 break
             #Kitap işlemleri menüsündeyYanlış değer girdiği için tekrar seçim yapılması isteniyor.

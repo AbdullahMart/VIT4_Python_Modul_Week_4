@@ -1,5 +1,5 @@
 #Kitap işlemleri dosyasını çekiyor.
-import book_transaction
+from book_transaction import delete_book,load_books,save_books
 
 #json kütüphanesi.
 import json
@@ -8,11 +8,8 @@ import json
 import os
 
 #time dosyasını çekiyor.
-import time_library
-
 from datetime import datetime, timedelta
-
-
+from my_time import current_time, fourteen_days_later
 
 #member.json dosyasi olusturulur.(member.json dosyasinin var olup olmadigini sorguluyoruz. Varsa acar yoksa member.json dosyasini olusturur).
 def open_member_file():
@@ -144,17 +141,12 @@ def borrow_book():
                 for member in members:
                     if member["id"] == id:
                         track = read_track()
-
-                        borrow_date_= time_library.current_time()
-
-                        return_date_=time_library.two_weeks_later()
-
-                        track.append({"Member": member,  "Book": book,  "borrow_date": borrow_date_ ,
-                                        "return_date": return_date_})
+                        track.append({"Member": member, "Book": book, "borrow_date": current_time(),
+                                      "return_date": fourteen_days_later()})
                         write_track(track)
 
                         new_books = [k for k in books if k["Book_Name"] != book_borrow_choice]
-                        record(new_books)
+                        save_books(new_books)
                         print("Book borrowed successfully.")
                         return
                 else:
@@ -220,15 +212,15 @@ def return_book():
             print("-" * 30)
 
     while True:
-        return_Book_Name = input("Which book would you like to return:\nPress 0 to go back. ")
+        return_Book_Name = input("Which book would you like to return(Press 0 to go back.): ")
         if return_Book_Name == "0":
             return
         for loan in track_file:
             if loan["Member"]["id"] == id and loan["Book"]["Book_Name"].lower() == return_Book_Name.lower():
-                books = read()
+                books = load_books()
                 books.append(loan["Book"])
                 track_file.remove(loan)
-                record(books)
+                save_books(books)
                 write_track(track_file)
                 print(f"{return_Book_Name} book has been successfully returned.")
                 return
@@ -273,13 +265,5 @@ def book_tracking():
 
 
 
-
-def current_time():
-    return datetime.now()
-
-def two_weeks_later():
-    return current_time() + timedelta(days=14)
-
-
 if __name__ == "__main__":
-    pass
+    pas

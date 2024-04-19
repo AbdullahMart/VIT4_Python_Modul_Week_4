@@ -1,0 +1,20 @@
+[
+    {
+        "Member": {
+            "id": 1,
+            "Member name": "Huseyin",
+            "Tel": "0687859690",
+            "Address": "Den Haag"
+        },
+        "Book": {
+            "Barcode": 9786051856322,
+            "Language": "T\u00fcrk\u00e7e",
+            "Price": 27.3,
+            "Book_Name": "Hazan",
+            "Publisher": "Everest Yay\u0131nlar\u0131",
+            "Author": "Ay\u015fe Kulin"
+        },
+        "borrow_date": "2024-04-19",
+        "return_date": "2024-05-03"
+    }
+]

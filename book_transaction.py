@@ -8,10 +8,10 @@ BOOKS_FILE = "books.json"
 def load_books():
     # Eğer dosya yoksa, boş bir liste oluşturup dosyaya yazıyoruz.
     if not os.path.exists(BOOKS_FILE):
-        with open(BOOKS_FILE, "w") as f:
+        with open(BOOKS_FILE, "w",encoding="utf-8") as f:
             json.dump([], f)
     # Dosyayı okuyup içeriği JSON formatında döndürüyoruz.
-    with open(BOOKS_FILE, "r") as f:
+    with open(BOOKS_FILE, "r",encoding="utf-8") as f:
         return json.load(f)
 
 # Kitapları kaydetmek için dosyaya yazan bir fonksiyon.
@@ -25,9 +25,9 @@ def add_book():
     # Mevcut kitapları yüklüyoruz.
     books = load_books()
     # Kullanıcıdan kitap bilgilerini alıyoruz.
-    Barcode = input("Enter the Barcode: ")
+    Barcode = int(input("Enter the Barcode: "))
     Language = input("Enter the Language: ")
-    Price = input("Enter the Price: ")
+    Price = float(input("Enter the Price: "))
     Book_Name = input("Enter the book name: ")
     Publisher = input("Enter the Publisher: ")
     Author = input("Enter the Author: ")
@@ -49,7 +49,7 @@ def add_book():
 # Bir kitabı silen fonksiyon.
 def delete_book():
     books = load_books()
-    Barcode = input("Enter the Barcode of the book to delete: ")
+    Barcode = int(input("Enter the Barcode of the book to delete: "))
 
     for book in books:
         if book["Barcode"] == Barcode:
@@ -65,7 +65,7 @@ def delete_book():
 # Bir kitabı arayan fonksiyon.
 def search_book():
     books = load_books()
-    Barcode = input("Enter the Barcode of the book to search:")
+    Barcode = int(input("Enter the Barcode of the book to search: "))
 
     for book in books:
         if book["Barcode"] == Barcode:
@@ -79,7 +79,7 @@ def search_book():
 # Bir kitabı güncelleyen fonksiyon.
 def update_book():
     books = load_books()
-    Barcode = input("Enter the Barcode of the book to update: ")
+    Barcode = int(input("Enter the Barcode of the book to update: "))
 
     for book in books:
         if book["Barcode"] == Barcode:
@@ -87,7 +87,7 @@ def update_book():
             Language = input("Enter the new Language: ")
             if Language:
                 book["Language"] = Language
-            Price = input("Enter the new Price: ")
+            Price = float(input("Enter the new Price: "))
             if Price:
                 book["Price"] = Price
             Book_Name = input("Enter the new book name: ")
@@ -106,6 +106,19 @@ def update_book():
             return
 
     print("Book not found.")
+
+# Kitaplari listeleyen fonksiyon.
+def list_of_books():
+    books = load_books()
+    print("List of Books:")
+    for book in books:
+        print("Barcode:", book["Barcode"])
+        print("Language:", book["Language"])
+        print("Price:", book["Price"])
+        print("Book Name:", book["Book_Name"])
+        print("Publisher:", book["Publisher"])
+        print("Author:", book["Author"])
+        print()  # Boş bir satır ekleyerek kitaplar arasında boşluk bırakıyoruz.
 
 # Kitap işlemlerinin yapıldığı menüyü gösteren fonksiyon.
 def book_menu():
@@ -133,6 +146,8 @@ def book_menu():
         else:
             print("Invalid choice. Please try again.")
 
-# Programın başlangıcı
+
+
 if __name__ == "__main__":
     book_menu()
+   
