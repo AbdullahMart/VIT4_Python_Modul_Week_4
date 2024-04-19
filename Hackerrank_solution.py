@@ -104,6 +104,9 @@ int main()
     return 0;
 }
 
+
+
+
 #Question 2:
 
 def rotateLeft(d, arr):
@@ -113,6 +116,9 @@ def rotateLeft(d, arr):
             arr[j]=arr[j+1]
         arr[len(arr)-1]=temp    
     return arr  
+
+
+
 
 #Question 3:
 

@@ -1,8 +1,8 @@
 #Kitap işlemleri dosyasını çekiyor.
-import book_transaction 
+from book_transaction import *
 
 #üye işlemleri dosyasını çekiyor.
-import member_transaction
+from member_transaction import *
 
 #json kütüphanesi
 import json
@@ -49,31 +49,31 @@ while True:
 
             #Kayıtlı tüm üye listesini sıralıyor.
             if menu_member_transaction=="1": 
-                member_transaction.members()
+                members()
 
             #Üye ekle fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="2":
-                member_transaction.add_member()
+                add_member()
                 
              #Üye arama fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="3":
-                member_transaction.search_member()
+                search_member()
 
             #Üye silme fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction== "4":
-                member_transaction.delete_member()
+                delete_member()
 
             #Kitap ödünç verme fonksiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="5":
-                member_transaction.borrow_book()
+                borrow_book()
 
             # Kitap iade verme fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction=="6":
-                member_transaction.return_book()
+                return_book()
 
             #Kitap takibi fonsiyonunu çekiyoruz.(Üye işlemlerinde tanımlı)
             elif menu_member_transaction == "7":
-                member_transaction.book_tracking()
+                book_tracking()
 
             # Üye  işlemlerinden çıkış yapıyoruz.
             elif menu_member_transaction =="0": 
@@ -106,19 +106,19 @@ while True:
 
             #Bütün kitap listesini çağırıyoruz.(Kitap işlemlerinde tanımlı)
             if menu_book_transaction=="1":
-                book_transaction.list_of_books()
+                list_of_books()
 
             #Kitap ekleme fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transaction=="2":
-                book_transaction.add_book()
+                add_book()
 
             #Kitap arama Fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transaction=="3":
-                book_transaction.search_book()
+                search_book()
 
             #Kitap silme fonksiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transaction== "4":
-                book_transaction.delete_book()
+                delete_book()
 
             # Kitap işlemleri Çıkış 
             elif menu_book_transaction=="0":
@@ -131,8 +131,8 @@ while True:
         # Ana menü çıkış
         elif main_menu_choise == "0":
 
-            print("Cikis yaptiniz.")
-            print("Tekrar Kütüphanemize bekleriz..")
+            print("You have logged out of the program..")
+            print("We hope you come again...")
             break
         
         # ana menüye yanlış değer girildiğinde seçimin düzeltilmesi isteniyor.
