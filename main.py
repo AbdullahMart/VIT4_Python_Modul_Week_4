@@ -106,11 +106,7 @@ while True:
 
             #Bütün kitap listesini çağırıyoruz.(Kitap işlemlerinde tanımlı)
             if menu_book_transaction=="1":
-<<<<<<< Updated upstream
                 list_of_books()
-=======
-                book_transaction.load_books()
->>>>>>> Stashed changes
 
             #Kitap ekleme fonsiyonunu çağırıyoruz.(Kitap işlemlerinde tanımlı)
             elif menu_book_transaction=="2":
