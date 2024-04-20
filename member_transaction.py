@@ -1,9 +1,17 @@
-import book_transaction
+#Kitap işlemleri dosyasını çekiyor.
+from book_transaction import delete_book,load_books,save_books
+
+#json kütüphanesi.
 import json
+
+#Dosya kontrolu icin.
 import os
 
+#time dosyasını çekiyor.
+from datetime import datetime, timedelta
+from my_time import current_time, fourteen_days_later
 
-
+#member.json dosyasi olusturulur.(member.json dosyasinin var olup olmadigini sorguluyoruz. Varsa acar yoksa member.json dosyasini olusturur).
 def open_member_file():
     if os.path.exists("member.json"):
         with open("member.json", "r") as members_file:
@@ -22,7 +30,7 @@ def members():
     for member in members:
         print("id:", member["id"], "Member name:", member["Member name"])
 
-
+#Uye guncellemek icin olusturulan fonksiyon.
 def update_member():
     id = int(input("Please enter the id number of the member you want to update:"))
     members = open_member_file()
@@ -37,6 +45,7 @@ def update_member():
             save_member(members)
 
 
+#Uye id kontrolu yapiliyor.(Yeni uye ekleme sirasinda girilen id de uye olup olmadigini kontrol eder).
 def member_check(members, id):
     for member in members:
         if member["id"] == id:
@@ -45,12 +54,14 @@ def member_check(members, id):
         return False
 
 
+#Kaydetme fonksiyonu(member.json dosyasindaki degisiklikleri kaydeder).
 def save_member(members):
     with open("member.json", "w") as members_file:
         json.dump(members, members_file, indent=4)
         print("Successfully updated.")
 
 
+#Yeni uye ekleme fonksiyonu.
 def add_member():
     members = open_member_file()
     id = int(input("Enter an ID number: "))
@@ -68,6 +79,7 @@ def add_member():
     save_member(members)
 
 
+#Uye arama fonksiyonu(Uye id ile sorgulama yapilir ve istenilen id deki uyenin bilgileri listelenir).
 def search_member():
     members = open_member_file()
     try:
@@ -84,6 +96,7 @@ def search_member():
         print("Cannot find the id you are searching for.")
         return search_member()
 
+#Uye silme fonksiyonu.
 def delete_member():
     members = open_member_file()
 
@@ -101,18 +114,19 @@ def delete_member():
     print(f"Member with id {member_to_delete} has been successfully deleted.")
 
 
+#Odunc kitap alma fonksiyonu.
 def borrow_book():
     while True:
         book_borrow_choice = input("Which book do you want to borrow (Press 0 to go back to the main page):")
         if book_borrow_choice == "0":
-            return  # Return to the main page
+            return  # Ana menuye geri gider.
 
-        with open("book.json", "r", encoding="utf-8") as file:
+        with open("books.json", "r", encoding="utf-8") as file:
             books = json.load(file)
 
         book_found = False
         for book in books:
-            if book["book_name"] == book_borrow_choice:
+            if book["Book_Name"] == book_borrow_choice:
                 book_found = True
                 break
 
@@ -131,8 +145,8 @@ def borrow_book():
                                       "return_date": fourteen_days_later()})
                         write_track(track)
 
-                        new_books = [k for k in books if k["book_name"] != book_borrow_choice]
-                        record(new_books)
+                        new_books = [k for k in books if k["Book_Name"] != book_borrow_choice]
+                        save_books(new_books)
                         print("Book borrowed successfully.")
                         return
                 else:
@@ -141,6 +155,7 @@ def borrow_book():
                 print("Please enter a valid ID number.")
 
 
+#Track.json dosyasi olusturulur ve yazilir.
 def write_track(track):
     for loan in track:
         loan["borrow_date"] = datetime.strptime(loan["borrow_date"], "%Y-%m-%d").strftime("%Y-%m-%d")
@@ -151,6 +166,7 @@ def write_track(track):
         print("Successfully updated.")
 
 
+#Track.json dosyasi buradan okunur/yuklenir.
 def read_track():
     if os.path.exists("track.json"):
         with open("track.json", "r") as track_file:
@@ -163,6 +179,7 @@ def read_track():
     return track
 
 
+#Kitap iade islemi fonksiyonu.
 def return_book():
     members = open_member_file()
     try:
@@ -191,27 +208,28 @@ def return_book():
             print("-" * 30)
             book_info = loan["Book"]
             print(
-                f"Book in your possession: Book Title: {book_info['book_name']} - Author: {book_info['author']} - Publisher: {book_info['publisher']}")
+                f"Book in your possession: Book Title: {book_info['Book_Name']} - Author: {book_info['Author']} - Publisher: {book_info['Publisher']}")
             print("-" * 30)
 
     while True:
-        return_book_name = input("Which book would you like to return:\nPress 0 to go back. ")
-        if return_book_name == "0":
+        return_Book_Name = input("Which book would you like to return(Press 0 to go back.): ")
+        if return_Book_Name == "0":
             return
         for loan in track_file:
-            if loan["Member"]["id"] == id and loan["Book"]["book_name"].lower() == return_book_name.lower():
-                books = read()
+            if loan["Member"]["id"] == id and loan["Book"]["Book_Name"].lower() == return_Book_Name.lower():
+                books = load_books()
                 books.append(loan["Book"])
                 track_file.remove(loan)
-                record(books)
+                save_books(books)
                 write_track(track_file)
-                print(f"{return_book_name} book has been successfully returned.")
+                print(f"{return_Book_Name} book has been successfully returned.")
                 return
         else:
             print("The book you entered does not appear to be in your possession.")
             continue
 
 
+#Kitap takip fonksiyonu.
 def book_tracking():
     members = open_member_file()
     try:
@@ -239,12 +257,13 @@ def book_tracking():
             print("-" * 30)
             book_info = loan["Book"]
             print(
-                f"Books in your possession: Book Title: {book_info['book_name']} - Author: {book_info['author']} - Publisher: {book_info['publisher']}")
+                f"Books in your possession: Book Title: {book_info['Book_Name']} - Author: {book_info['Author']} - Publisher: {book_info['Publisher']}")
             print("-" * 30)
         else:
             print("The book you borrowed does not exist.")
             return
 
 
+
 if __name__ == "__main__":
-    pass
+    pas
